@@ -45,7 +45,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
+          key: ${{ secrets.VPS_PASSWORD }}
           source: dist/*
           target: /home/goldrush-backend
 
@@ -54,7 +54,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
+          key: ${{ secrets.VPS_PASSWORD }}
           script: |
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
