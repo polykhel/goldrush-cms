@@ -47,8 +47,8 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_PASSWORD }}
           source: dist/*
-          target: /home/goldrush-backend
-          overwrite: true
+          target: /home/goldrush/goldrush-backend
+          rm: true
 
       - name: Restart Strapi
         uses: appleboy/ssh-action@v1.2.0
