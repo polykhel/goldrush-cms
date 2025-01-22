@@ -37,7 +37,7 @@ jobs:
           echo DATABASE_FILENAME = ${{ secrets.DATABASE_FILENAME }} >> .env
           echo JWT_SECRET = ${{ secrets.JWT_SECRET }} >> .env
 
-      - name: Build Angular app
+      - name: Build Strapi
         run: npm run build --omit=dev
 
       - name: Transfer to VPS
@@ -55,4 +55,7 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-          script: pm2 restart api
+          script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            pm2 restart api
