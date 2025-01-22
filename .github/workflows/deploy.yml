@@ -48,3 +48,11 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           source: dist/*
           target: /home/goldrush-backend
+
+      - name: Restart Strapi
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: pm2 restart api
