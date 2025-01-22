@@ -9,5 +9,5 @@ export default [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
-  'global::admin-redirect'
+  { resolve: '../src/middlewares/admin-redirect' },
 ];
