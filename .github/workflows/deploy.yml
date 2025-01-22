@@ -47,7 +47,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_PASSWORD }}
           source: dist/*
-          target: /home/goldrush/goldrush-backend
+          target: /home/goldrush/cms
           rm: true
 
       - name: Restart Strapi
