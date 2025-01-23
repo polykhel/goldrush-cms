@@ -4,7 +4,8 @@
   "info": {
     "singularName": "country",
     "pluralName": "countries",
-    "displayName": "Country"
+    "displayName": "Country",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,6 +21,11 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "iataCodes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.list"
     }
   }
 }
