@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_unique_provider_quotations",
+  "info": {
+    "displayName": "Provider Quotation",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "includeInEmail": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "providerStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "received",
+        "not_available",
+        "no_response"
+      ]
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "PHP",
+        "USD"
+      ]
+    },
+    "phpEquivalent": {
+      "type": "decimal"
+    },
+    "emailRemarks": {
+      "type": "text"
+    },
+    "provider": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::provider.provider"
+    },
+    "exchangeRate": {
+      "type": "decimal"
+    },
+    "remarks": {
+      "type": "text"
+    }
+  }
+}

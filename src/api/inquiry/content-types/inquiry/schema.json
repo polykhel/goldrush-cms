@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inquiries",
+  "info": {
+    "singularName": "inquiry",
+    "pluralName": "inquiries",
+    "displayName": "Inquiry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clientName": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "required": true,
+      "type": "date"
+    },
+    "contactPoint": {
+      "type": "string"
+    },
+    "contactPointOther": {
+      "type": "string"
+    },
+    "travelDays": {
+      "type": "integer",
+      "required": true
+    },
+    "travelNights": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "destination": {
+      "type": "string",
+      "required": true
+    },
+    "preferredHotel": {
+      "type": "string"
+    },
+    "paxAdult": {
+      "required": true,
+      "default": 0,
+      "type": "integer"
+    },
+    "paxChildAges": {
+      "type": "string"
+    },
+    "otherServices": {
+      "type": "text"
+    },
+    "remarks": {
+      "type": "text"
+    },
+    "submitted": {
+      "type": "boolean"
+    },
+    "providerQuotations": {
+      "displayName": "Provider Quotation",
+      "type": "component",
+      "repeatable": true,
+      "component": "unique.provider-quotation"
+    },
+    "dateRanges": {
+      "type": "component",
+      "repeatable": true,
+      "component": "unique.date-range"
+    },
+    "packageType": {
+      "type": "string"
+    },
+    "paxChild": {
+      "type": "integer"
+    },
+    "creator": {
+      "type": "string"
+    },
+    "modifier": {
+      "type": "string"
+    }
+  }
+}

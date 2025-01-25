@@ -465,6 +465,60 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiInquiryInquiry extends Struct.CollectionTypeSchema {
+  collectionName: 'inquiries';
+  info: {
+    description: '';
+    displayName: 'Inquiry';
+    pluralName: 'inquiries';
+    singularName: 'inquiry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clientName: Schema.Attribute.String & Schema.Attribute.Required;
+    contactPoint: Schema.Attribute.String;
+    contactPointOther: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    creator: Schema.Attribute.String;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
+    dateRanges: Schema.Attribute.Component<'unique.date-range', true>;
+    destination: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::inquiry.inquiry'
+    > &
+      Schema.Attribute.Private;
+    modifier: Schema.Attribute.String;
+    otherServices: Schema.Attribute.Text;
+    packageType: Schema.Attribute.String;
+    paxAdult: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    paxChild: Schema.Attribute.Integer;
+    paxChildAges: Schema.Attribute.String;
+    preferredHotel: Schema.Attribute.String;
+    providerQuotations: Schema.Attribute.Component<
+      'unique.provider-quotation',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    remarks: Schema.Attribute.Text;
+    submitted: Schema.Attribute.Boolean;
+    travelDays: Schema.Attribute.Integer & Schema.Attribute.Required;
+    travelNights: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
   collectionName: 'packages';
   info: {
@@ -520,6 +574,7 @@ export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    email: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -530,6 +585,7 @@ export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
+    trackerLink: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1048,6 +1104,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::country.country': ApiCountryCountry;
       'api::global.global': ApiGlobalGlobal;
+      'api::inquiry.inquiry': ApiInquiryInquiry;
       'api::package.package': ApiPackagePackage;
       'api::provider.provider': ApiProviderProvider;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -21,6 +21,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::country.country"
+    },
+    "trackerLink": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
     }
   }
 }

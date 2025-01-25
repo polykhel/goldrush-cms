@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_unique_date_ranges",
+  "info": {
+    "displayName": "Date Range",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "start": {
+      "type": "date",
+      "required": true
+    },
+    "end": {
+      "required": true,
+      "type": "date"
+    }
+  }
+}

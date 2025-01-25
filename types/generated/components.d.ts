@@ -73,6 +73,41 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface UniqueDateRange extends Struct.ComponentSchema {
+  collectionName: 'components_unique_date_ranges';
+  info: {
+    displayName: 'Date Range';
+    icon: 'calendar';
+  };
+  attributes: {
+    end: Schema.Attribute.Date & Schema.Attribute.Required;
+    start: Schema.Attribute.Date & Schema.Attribute.Required;
+  };
+}
+
+export interface UniqueProviderQuotation extends Struct.ComponentSchema {
+  collectionName: 'components_unique_provider_quotations';
+  info: {
+    description: '';
+    displayName: 'Provider Quotation';
+  };
+  attributes: {
+    currency: Schema.Attribute.Enumeration<['PHP', 'USD']>;
+    emailRemarks: Schema.Attribute.Text;
+    exchangeRate: Schema.Attribute.Decimal;
+    includeInEmail: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    phpEquivalent: Schema.Attribute.Decimal;
+    price: Schema.Attribute.Decimal;
+    provider: Schema.Attribute.Relation<'oneToOne', 'api::provider.provider'>;
+    providerStatus: Schema.Attribute.Enumeration<
+      ['pending', 'received', 'not_available', 'no_response']
+    >;
+    remarks: Schema.Attribute.Text;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -82,6 +117,8 @@ declare module '@strapi/strapi' {
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'unique.date-range': UniqueDateRange;
+      'unique.provider-quotation': UniqueProviderQuotation;
     }
   }
 }
