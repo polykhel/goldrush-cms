@@ -46,6 +46,9 @@
     },
     "remarks": {
       "type": "text"
+    },
+    "sent": {
+      "type": "boolean"
     }
   }
 }

@@ -105,6 +105,7 @@ export interface UniqueProviderQuotation extends Struct.ComponentSchema {
       ['pending', 'received', 'not_available', 'no_response']
     >;
     remarks: Schema.Attribute.Text;
+    sent: Schema.Attribute.Boolean;
   };
 }
 
