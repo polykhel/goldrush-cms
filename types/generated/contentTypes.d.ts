@@ -487,6 +487,9 @@ export interface ApiInquiryInquiry extends Struct.CollectionTypeSchema {
     date: Schema.Attribute.Date & Schema.Attribute.Required;
     dateRanges: Schema.Attribute.Component<'unique.date-range', true>;
     destination: Schema.Attribute.String & Schema.Attribute.Required;
+    inquiryStatus: Schema.Attribute.Enumeration<
+      ['NEW', 'PENDING', 'READY', 'QUOTED', 'CLOSED']
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -508,7 +511,6 @@ export interface ApiInquiryInquiry extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     remarks: Schema.Attribute.Text;
-    submitted: Schema.Attribute.Boolean;
     travelDays: Schema.Attribute.Integer & Schema.Attribute.Required;
     travelNights: Schema.Attribute.Integer &
       Schema.Attribute.Required &

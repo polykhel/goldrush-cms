@@ -56,9 +56,6 @@
     "remarks": {
       "type": "text"
     },
-    "submitted": {
-      "type": "boolean"
-    },
     "providerQuotations": {
       "displayName": "Provider Quotation",
       "type": "component",
@@ -81,6 +78,16 @@
     },
     "modifier": {
       "type": "string"
+    },
+    "inquiryStatus": {
+      "type": "enumeration",
+      "enum": [
+        "NEW",
+        "PENDING",
+        "READY",
+        "QUOTED",
+        "CLOSED"
+      ]
     }
   }
 }
