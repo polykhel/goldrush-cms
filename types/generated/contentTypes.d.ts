@@ -583,6 +583,7 @@ export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
       'api::provider.provider'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
