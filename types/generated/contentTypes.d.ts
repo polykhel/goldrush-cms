@@ -538,6 +538,7 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    currency: Schema.Attribute.Enumeration<['PHP', 'USD']>;
     duration: Schema.Attribute.String;
     exclusions: Schema.Attribute.Component<'shared.list', true>;
     images: Schema.Attribute.Media<'images' | 'files', true>;

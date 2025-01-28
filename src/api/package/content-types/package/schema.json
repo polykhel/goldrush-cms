@@ -61,6 +61,13 @@
         "images",
         "files"
       ]
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "PHP",
+        "USD"
+      ]
     }
   }
 }
