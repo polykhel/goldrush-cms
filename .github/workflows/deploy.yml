@@ -16,7 +16,7 @@ jobs:
       - name: Cache node modules
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 21
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
@@ -38,7 +38,7 @@ jobs:
           echo JWT_SECRET = ${{ secrets.JWT_SECRET }} >> .env
 
       - name: Build Strapi
-        run: npm run build --omit=dev --debug
+        run: npm run build --omit=dev
 
       - name: Transfer to VPS
         uses: appleboy/scp-action@v0.1.7
