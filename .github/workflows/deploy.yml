@@ -58,6 +58,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_KEY }}
           script: |
-            export NVM_DIR=${{ vars.HOME_ENV }}/.nvm
-            source ${{ vars.HOME_ENV }}/.nvm/nvm.sh
+            export NVM_DIR=${{ vars.NVM_DIR }}
+            source ${{ vars.NVM_DIR }}/nvm.sh
             pm2 restart api
