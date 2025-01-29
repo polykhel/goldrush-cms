@@ -26,9 +26,9 @@ jobs:
       - name: Create .env file
         run: |
           touch .env
-          echo HOST = ${{ secrets.HOST }} >> .env
-          echo PORT = ${{ secrets.PORT }} >> .env
-          echo URL = ${{ secrets.URL }} >> .env
+          echo HOST = ${{ vars.HOST }} >> .env
+          echo PORT = ${{ vars.PORT }} >> .env
+          echo URL = ${{ vars.URL }} >> .env
           echo APP_KEYS = ${{ secrets.APP_KEYS }} >> .env
           echo API_TOKEN_SALT = ${{ secrets.API_TOKEN_SALT }} >> .env
           echo TRANSFER_TOKEN_SALT = ${{ secrets.TRANSFER_TOKEN_SALT }} >> .env
@@ -47,7 +47,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_PASSWORD }}
           source: dist/*
-          target: /home/goldrush/cms
+          target: ${{ vars.HOME_ENV }}/cms
           overwrite: true
 
       - name: Restart Strapi
@@ -57,6 +57,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_PASSWORD }}
           script: |
-            export NVM_DIR=~/.nvm
-            source ~/.nvm/nvm.sh
+            export NVM_DIR=${{ vars.HOME_ENV }}/.nvm
+            source ${{ vars.HOME_ENV }}/.nvm/nvm.sh
             pm2 restart api
