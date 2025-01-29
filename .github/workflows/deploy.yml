@@ -18,9 +18,8 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm update && npm install
+      - run: npm update
+      - run: npm install
 
       - name: Create .env file
         run: |
@@ -45,7 +44,7 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_KEY }}
-          passphrase: ${{ secrets.KEY_PASSPHRASE }}
+          passphrase: ${{ secrets.VPS_KEY_PASSPHRASE }}
           source: dist/*
           target: ${{ vars.HOME_ENV }}/cms
           overwrite: true
@@ -56,7 +55,7 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_KEY }}
-          passphrase: ${{ secrets.KEY_PASSPHRASE }}
+          passphrase: ${{ secrets.VPS_KEY_PASSPHRASE }}
           script: |
             export NVM_DIR=${{ vars.HOME_ENV }}/.nvm
             source ${{ vars.HOME_ENV }}/.nvm/nvm.sh
