@@ -38,7 +38,7 @@ jobs:
           echo JWT_SECRET = ${{ secrets.JWT_SECRET }} >> .env
 
       - name: Build Strapi
-        run: npm run build --omit=dev
+        run: npm run build --omit=dev --debug
 
       - name: Transfer to VPS
         uses: appleboy/scp-action@v0.1.7
