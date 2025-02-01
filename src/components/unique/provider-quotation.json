@@ -49,6 +49,9 @@
     },
     "sent": {
       "type": "boolean"
+    },
+    "exchangeRateLastUpdated": {
+      "type": "datetime"
     }
   }
 }

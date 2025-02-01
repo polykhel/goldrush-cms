@@ -95,6 +95,7 @@ export interface UniqueProviderQuotation extends Struct.ComponentSchema {
     currency: Schema.Attribute.Enumeration<['PHP', 'USD']>;
     emailRemarks: Schema.Attribute.Text;
     exchangeRate: Schema.Attribute.Decimal;
+    exchangeRateLastUpdated: Schema.Attribute.DateTime;
     includeInEmail: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
