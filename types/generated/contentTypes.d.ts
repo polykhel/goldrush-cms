@@ -597,6 +597,56 @@ export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiQuotationQuotation extends Struct.CollectionTypeSchema {
+  collectionName: 'quotations';
+  info: {
+    description: '';
+    displayName: 'Quotation';
+    pluralName: 'quotations';
+    singularName: 'quotation';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    airline: Schema.Attribute.String;
+    arrival: Schema.Attribute.Component<'shared.flight-details', false>;
+    arrivalPrice: Schema.Attribute.Decimal;
+    clientName: Schema.Attribute.String & Schema.Attribute.Required;
+    country: Schema.Attribute.Relation<'oneToOne', 'api::country.country'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    departure: Schema.Attribute.Component<'shared.flight-details', false>;
+    departurePrice: Schema.Attribute.Decimal;
+    destination: Schema.Attribute.String;
+    exclusions: Schema.Attribute.Component<'shared.list', true>;
+    flightIncluded: Schema.Attribute.Boolean;
+    inclusions: Schema.Attribute.Component<'shared.list', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::quotation.quotation'
+    > &
+      Schema.Attribute.Private;
+    modeOfTransportation: Schema.Attribute.Enumeration<['Flight', 'Land']>;
+    noOfPax: Schema.Attribute.Integer;
+    optionalTours: Schema.Attribute.Component<'shared.list', true>;
+    package: Schema.Attribute.Relation<'oneToOne', 'api::package.package'>;
+    provider: Schema.Attribute.Relation<'oneToOne', 'api::provider.provider'>;
+    publishedAt: Schema.Attribute.DateTime;
+    ratePerPax: Schema.Attribute.Decimal;
+    suggestedRatePerPax: Schema.Attribute.Decimal;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    totalFlightPrice: Schema.Attribute.Decimal;
+    totalRatePerPax: Schema.Attribute.Decimal;
+    travelDates: Schema.Attribute.Component<'unique.date-range', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1113,6 +1163,7 @@ declare module '@strapi/strapi' {
       'api::inquiry.inquiry': ApiInquiryInquiry;
       'api::package.package': ApiPackagePackage;
       'api::provider.provider': ApiProviderProvider;
+      'api::quotation.quotation': ApiQuotationQuotation;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

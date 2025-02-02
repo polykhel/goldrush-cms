@@ -1,5 +1,21 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface SharedFlightDetails extends Struct.ComponentSchema {
+  collectionName: 'components_shared_flight_details';
+  info: {
+    description: '';
+    displayName: 'Flight Details';
+    icon: 'paperPlane';
+  };
+  attributes: {
+    date: Schema.Attribute.Date;
+    endTime: Schema.Attribute.DateTime;
+    flightNumber: Schema.Attribute.String;
+    iataCode: Schema.Attribute.String;
+    startTime: Schema.Attribute.DateTime;
+  };
+}
+
 export interface SharedList extends Struct.ComponentSchema {
   collectionName: 'components_shared_lists';
   info: {
@@ -113,6 +129,7 @@ export interface UniqueProviderQuotation extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'shared.flight-details': SharedFlightDetails;
       'shared.list': SharedList;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
