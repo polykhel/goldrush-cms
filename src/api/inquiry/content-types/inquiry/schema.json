@@ -88,6 +88,11 @@
         "QUOTED",
         "CLOSED"
       ]
+    },
+    "country": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::country.country"
     }
   }
 }

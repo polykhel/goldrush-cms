@@ -480,6 +480,7 @@ export interface ApiInquiryInquiry extends Struct.CollectionTypeSchema {
     clientName: Schema.Attribute.String & Schema.Attribute.Required;
     contactPoint: Schema.Attribute.String;
     contactPointOther: Schema.Attribute.String;
+    country: Schema.Attribute.Relation<'oneToOne', 'api::country.country'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
